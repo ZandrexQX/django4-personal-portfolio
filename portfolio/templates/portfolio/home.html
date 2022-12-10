@@ -1,0 +1,39 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+    {% load static %}
+    <br>
+    <div class="container text-center">
+      <img src ="{% static 'portfolio/IMG_8596.jpg' %}" height = 400 class="rounded-3">
+      <h1 style="font-family: 'Rubik Vinyl'" class="text-secondary">Zandrex3DxPrint</h1>
+    </div>
+    <br>
+    <div class="mb-1 text-dark bg-secondary border-bottom border-2 border-dark">
+      <h2 class="fw-bold" id = "title">Мои проекты</h2>
+    </div>
+    <div class="container text-center">
+      <div class="row">
+        
+        {% for project in projects %}
+          <div class="col-4 mb-3">
+            <div class="shadow sm p-2 border border-primary border-opacity-50 rounded-bottom">
+              <div id = "title" class="pb-2 bg-light rounded-3" ><strong>{{ project.title }}</strong></div>
+              <img src ="{{ project.image.url }}" class="img-fluid rounded-3">
+                <p class="shadow text-start bg-light">{{ project.description }}</p>
+
+              {% if project.url %}
+                <br>
+                <button type="button" class="btn btn-primary">
+                <a href  = "btn btn-primary {{ project.url }}" class="link-light">Нажми на меня</a>
+              </button>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor%}
+      </div>
+    </div>
+    <div class="d-flex" style="height: 200px;">
+      <div class="vr"></div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+<p style="font-family: 'Oswald'"><strong>Количество постов: {{ blogs.count }}</strong></p>
+
+{% for blog in blogs %}
+<div class="col-8 p-4 mb-3 mt-2 border border-3 border-info border-opacity-50 rounded-3">
+<a href="{% url 'blog:detail' blog.id %}" class="container text-center link-secondary" id = "Title"><h2>{{blog.title }}</h2></a>
+<p class="h6" id='date'>{{ blog.date|date:'d M Y'}}</p>
+<div class="text-success">
+  <hr>
+</div>
+<p class="bg-light shadow p-3">{{ blog.description|safe|truncatechars:100 }}</p>
+</div>
+{% if blog.url %}
+<br>
+<a href = "{{ blog.url }}" class="link-info">Нажми на меня</a>
+{% endif %}
+
+{% endfor%}
+{% endblock %}

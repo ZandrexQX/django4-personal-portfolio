@@ -13,10 +13,11 @@
   <hr>
 </div>
 <p class="bg-light shadow p-3">{{ blog.description|safe|truncatechars:100 }}</p>
-</div>
 {% if blog.url %}
 <br>
 <a href = "{{ blog.url }}" class="link-info">Нажми на меня</a>
+</div>
+
 {% endif %}
 
 {% endfor%}
